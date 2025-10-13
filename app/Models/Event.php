@@ -14,6 +14,11 @@ class Event extends Model
         'date',
         'description'
     ];
+
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(EventTag::class, 'event_tags_events');

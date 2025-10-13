@@ -17,6 +17,7 @@ Route::post('/menus-update-status', [MenuController::class, 'updateStatus'])->na
 Route::resource('/contact-infos', ContactInfoController::class);
 Route::resource('/event-tags', EventTagController::class);
 Route::resource('/events', EventController::class);
+Route::post('/events/upload-image', [EventController::class, 'upload'])->name('events.upload');
 
 Route::get('/contact-lists', [ContactListController::class, 'index'])->name('contact-lists.index');
 

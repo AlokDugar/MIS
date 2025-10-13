@@ -37,7 +37,7 @@ class EventController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'image_path' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'date' => 'nullable|date|before_or_equal:today',
+            'date' => 'nullable|date|after_or_equal:today',
             'description' => 'required|string',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:event_tags,id',
@@ -138,5 +138,31 @@ class EventController extends Controller
         $event->delete();
 
         return redirect()->back()->with('success', 'Event deleted successfully!');
+    }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            // Original file name
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+
+            // Create unique file name
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            // Move the uploaded file to public/event_media
+            $request->file('upload')->move(public_path('event_media'), $fileName);
+
+            // Get the URL to return to CKEditor
+            $url = asset('event_media/' . $fileName);
+
+            // Return JSON response
+            return response()->json([
+                'fileName' => $fileName,
+                'uploaded' => 1,
+                'url' => $url
+            ]);
+        }
     }
 }
