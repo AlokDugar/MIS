@@ -73,7 +73,7 @@
                                                     <td>
                                                         <ul class="action">
                                                             <li class="edit">
-                                                                <a href="#">
+                                                                <a href="{{ route('events.edit', $event->id) }}">
                                                                     <i data-feather="edit"></i>
                                                                 </a>
                                                             </li>

@@ -87,7 +87,7 @@ class EventController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'image_path' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'date' => 'nullable|date|before_or_equal:today',
+            'date' => 'nullable|date|after_or_equal:today',
             'description' => 'required|string',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:event_tags,id',
