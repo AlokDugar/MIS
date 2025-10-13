@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\ContactListController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\EventTagController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -22,6 +24,9 @@ Route::post('/settings-update', [SettingsController::class, 'update'])->name('se
 Route::get('/profile-index', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile-checkOldPassword', [ProfileController::class, 'checkOldPassword'])->name('profile.checkOldPassword');
 Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::resource('events', EventController::class);
+Route::resource('event-tags', EventTagController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

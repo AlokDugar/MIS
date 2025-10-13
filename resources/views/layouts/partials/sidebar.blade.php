@@ -20,6 +20,12 @@
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                             href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Committee
                                 Members</span></a></li>
+                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
+                            href="{{ route('event-tags.index') }}"><i data-feather="tag"></i><span>Event Tags</span></a>
+                    </li>
+                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
+                            href="{{ route('events.index') }}"><i data-feather="calendar"></i><span>Events</span></a>
+                    </li>
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
                                 data-feather="mail"></i><span>Contact Us</span></a>
