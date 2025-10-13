@@ -2,7 +2,7 @@
     <div>
         <div class="logo-wrapper" style="text-align: center;">
             <a href="{{ route('dashboard') }}">
-                <img class="img-fluid for-light" src="{{ asset('assets/images/MIS_logo.png') }}" alt="logo"
+                <img class="img-fluid for-light" src="{{ asset('storage/' . $settings->dashboard_logo) }}" alt="logo"
                     style="display: inline-block;">
             </a>
         </div>
@@ -15,13 +15,10 @@
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                             href="{{ route('menus.index') }}"><i data-feather="menu"></i><span>Menus</span></a></li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="star"></i><span>Features</span></a>
-                    </li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                             href="{{ route('dashboard') }}"><i data-feather="users"></i><span>Clubs</span></a>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Team
+                            href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Committee
                                 Members</span></a></li>
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
@@ -32,7 +29,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="settings"></i><span>Settings</span></a>
+                            href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a>
                     </li>
                 </ul>
             </div>

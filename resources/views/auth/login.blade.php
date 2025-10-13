@@ -1,3 +1,7 @@
+<?php
+use App\Models\Setting;
+$settings = Setting::first();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +14,8 @@
     <meta name="" content="">
     <meta name="author" content="pixelstrap">
 
-    <link rel="icon" href="{{ asset('assets/images/MIS_logo.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('assets/images/MIS_logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('storage/' . $settings->favicon) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/' . $settings->favicon) }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
@@ -31,7 +35,7 @@
                 <div class="login-card">
                     <div>
                         <div><a class="logo" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('assets/images/MIS_logo.png') }}" alt="logo"></a></div>
+                                    src="{{ asset('storage/' . $settings->dashboard_logo) }}" alt="logo"></a></div>
                         <div class="login-main">
                             @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show d-flex align-items-center justify-content-between"
