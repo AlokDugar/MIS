@@ -18,7 +18,7 @@
                             href="{{ route('event-tags.index') }}"><i data-feather="tag"></i><span>Event Tags</span></a>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('menus.index') }}"><i data-feather="calendar"></i><span>Events</span></a>
+                            href="{{ route('events.index') }}"><i data-feather="calendar"></i><span>Events</span></a>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                             href="{{ route('dashboard') }}"><i data-feather="users"></i><span>Clubs</span></a>

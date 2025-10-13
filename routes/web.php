@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\ContactListController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -15,6 +16,7 @@ Route::resource('menus', MenuController::class);
 Route::post('/menus-update-status', [MenuController::class, 'updateStatus'])->name('menus.updateStatus');
 Route::resource('/contact-infos', ContactInfoController::class);
 Route::resource('/event-tags', EventTagController::class);
+Route::resource('/events', EventController::class);
 
 Route::get('/contact-lists', [ContactListController::class, 'index'])->name('contact-lists.index');
 
