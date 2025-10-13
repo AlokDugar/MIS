@@ -1,0 +1,32 @@
+// Bootstrap
+@import "components/bootstrap";
+
+//Utils
+@import "utilities/api";
+@import "utilities/variables";
+@import "utilities/theme-font";
+:root {
+    --theme-deafult:#ff5d22;
+    --theme-secondary: #eeb82f;
+}
+
+// Layout
+@import "layout/footer.scss";
+@import "layout/grid.scss";
+@import "layout/header.scss";
+@import "layout/navs.scss";
+@import "layout/search.scss";
+@import "layout/sidebar.scss";
+@import "layout/box-layout.scss";
+
+// Themes
+@import "themes/dark.scss";
+@import "themes/theme-customizer.scss";
+@import "themes/update.scss";
+
+//app
+@import "themes/update.scss";
+@import "themes/dark.scss";
+
+// Helpers
+@import "helpers";
