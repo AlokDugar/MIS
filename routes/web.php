@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ContactListController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\EventTagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,6 +14,7 @@ Route::get('/', function () {
 Route::resource('menus', MenuController::class);
 Route::post('/menus-update-status', [MenuController::class, 'updateStatus'])->name('menus.updateStatus');
 Route::resource('/contact-infos', ContactInfoController::class);
+Route::resource('/event-tags', EventTagController::class);
 
 Route::get('/contact-lists', [ContactListController::class, 'index'])->name('contact-lists.index');
 
