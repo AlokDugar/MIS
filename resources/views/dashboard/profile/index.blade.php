@@ -42,7 +42,7 @@
                                         <div class="d-lg-flex d-md-flex d-sm-flex align-items-center">
                                             <div class="p-image">
                                                 <img class="img-100 rounded-circle profile-pic" alt=""
-                                                    src="{{ Auth::user()->image_path ? asset('storage/' . Auth::user()->image_path) : asset('assets/images/user/no-image.jpg') }}">
+                                                    src="{{ asset('assets/images/user/no-image.jpg') }}">
                                             </div>
                                             <div class="flex-grow-1">
                                                 <h3 class="mb-1 f-20 txt-primary">
