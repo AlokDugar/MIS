@@ -30,7 +30,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                                <h4 class="mb-0">Contact Infos Table</h4>
+                                <h4 class="mb-0">Contact Info Table</h4>
                                 <a href="{{ $contactCount < 1 ? route('contact-infos.create') : '#' }}"
                                     class="btn btn-primary"
                                     title="{{ $contactCount >= 1 ? 'Only one contact record is allowed.' : '' }}">

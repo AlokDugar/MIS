@@ -1,6 +1,16 @@
 <?php
 use App\Models\Event;
+
 $events = Event::orderBy('date', 'desc')->limit(5)->get();
+
+use App\Models\Menu;
+use App\Models\Club;
+use App\Models\ContactList;
+
+$totalMenus = Menu::count();
+$totalClubs = Club::count();
+$totalContactLists = ContactList::count();
+
 ?>
 @extends('layouts.dashboard')
 

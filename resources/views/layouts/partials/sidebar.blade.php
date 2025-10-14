@@ -38,7 +38,7 @@
                         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
                                 data-feather="mail"></i><span>Contact Us</span></a>
                         <ul class="sidebar-submenu">
-                            <li><a href="{{ route('contact-infos.index') }}">Contact Infos</a></li>
+                            <li><a href="{{ route('contact-infos.index') }}">Contact Info</a></li>
                             <li><a href="{{ route('contact-lists.index') }}">Contact Lists</a></li>
                         </ul>
                     </li>

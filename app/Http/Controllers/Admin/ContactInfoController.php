@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class ContactInfoController extends Controller
 {
     /**
-     * Display a listing of the contact infos.
+     * Display a listing of the Contact Info.
      */
     public function index()
     {
         $contactInfos = ContactInfo::all();
         $contactCount = ContactInfo::count();
-        return view('dashboard.contactUs.contactInfo.index', compact('contactInfos','contactCount'));
+        return view('dashboard.contactUs.contactInfo.index', compact('contactInfos', 'contactCount'));
     }
 
     public function create()
