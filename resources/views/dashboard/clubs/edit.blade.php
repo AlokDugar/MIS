@@ -7,6 +7,13 @@
                     <div class="col-sm-6">
                         <h3>Edit Club</h3>
                     </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/clubs') }}">Clubs</a></li>
+                            <li class="breadcrumb-item active">Edit Club</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>

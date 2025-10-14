@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS - Admin Panel</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('event-tags.index') }}">Event Tags</a></li>
                             <li class="breadcrumb-item active">Add Tag</li>
                         </ol>

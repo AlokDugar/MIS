@@ -7,6 +7,13 @@
                     <div class="col-sm-6">
                         <h3>Edit Committee</h3>
                     </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/committees') }}">Committees</a></li>
+                            <li class="breadcrumb-item active">Edit Committee</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,9 +88,10 @@
                                                 <div class="position-row d-flex align-items-center mb-2">
                                                     <input type="text"
                                                         name="positions[{{ $index }}][position_name]"
-                                                        value="{{ $position['position_name'] }}" placeholder="Position Name"
-                                                        class="form-control me-2">
-                                                    <input type="text" name="positions[{{ $index }}][holder_name]"
+                                                        value="{{ $position['position_name'] }}"
+                                                        placeholder="Position Name" class="form-control me-2">
+                                                    <input type="text"
+                                                        name="positions[{{ $index }}][holder_name]"
                                                         value="{{ $position['holder_name'] }}"
                                                         placeholder="Position Holder" class="form-control me-2">
                                                     <button type="button" class="btn btn-danger btn-sm"

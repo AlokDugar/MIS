@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}">MIS Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('menus.index') }}">Menus</a></li>
                             <li class="breadcrumb-item active">Edit Menu</li>
                         </ol>

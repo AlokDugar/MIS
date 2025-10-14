@@ -5,7 +5,14 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Create Event</h3>
+                        <h3>Add Event</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/events') }}">Events</a></li>
+                            <li class="breadcrumb-item active">Add Event</li>
+                        </ol>
                     </div>
                 </div>
             </div>

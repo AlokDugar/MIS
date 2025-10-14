@@ -5,7 +5,14 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Create Club</h3>
+                        <h3>Add Club</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/clubs') }}">Clubs</a></li>
+                            <li class="breadcrumb-item active">Add Club</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -119,7 +126,8 @@
         </div>
 
         <!-- Create Tag Modal -->
-        <div class="modal fade" id="createTagModal" tabindex="-1" aria-labelledby="createTagModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createTagModal" tabindex="-1" aria-labelledby="createTagModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
