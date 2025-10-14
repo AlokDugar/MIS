@@ -65,7 +65,7 @@ $events = Event::orderBy('date', 'desc')->limit(5)->get();
                             <div class="row align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Enquiries
+                                        Inquiries
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold">{{ $totalContactLists ?? 215 }}</div>
                                 </div>
@@ -88,7 +88,7 @@ $events = Event::orderBy('date', 'desc')->limit(5)->get();
                 </div>
 
                 <div class="col-md-4 col-sm-6 mb-3">
-                    <a href="#" class="btn btn-info btn-icon-split btn-lg">
+                    <a href="{{ route('clubs.index') }}" class="btn btn-info btn-icon-split btn-lg">
                         <span class="icon"><i class="fas fa-users"></i></span>
                         <span class="text">Manage Clubs</span>
                     </a>
@@ -97,7 +97,7 @@ $events = Event::orderBy('date', 'desc')->limit(5)->get();
                 <div class="col-md-4 col-sm-6 mb-3">
                     <a href="{{ route('contact-lists.index') }}" class="btn btn-success btn-icon-split btn-lg">
                         <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <span class="text">Read Enquiries</span>
+                        <span class="text">Read Inquiries</span>
                     </a>
                 </div>
             </div>

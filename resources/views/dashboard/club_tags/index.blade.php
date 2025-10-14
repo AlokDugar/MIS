@@ -29,7 +29,9 @@
                     <div class="card">
                         <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">Club Tags Table</h4>
-                            <a href="{{ route('club-tags.create') }}" class="btn btn-primary">Add Tag</a>
+                            <a href="{{ route('club-tags.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>
+                                Add
+                                Tag</a>
                         </div>
                         <div class="card-body">
                             <div class="dt-ext table-responsive theme-scrollbar">

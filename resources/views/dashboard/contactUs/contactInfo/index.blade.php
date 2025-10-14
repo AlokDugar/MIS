@@ -34,7 +34,7 @@
                                 <a href="{{ $contactCount < 1 ? route('contact-infos.create') : '#' }}"
                                     class="btn btn-primary"
                                     title="{{ $contactCount >= 1 ? 'Only one contact record is allowed.' : '' }}">
-                                    Add Contact Info
+                                    <i class="fas fa-plus"></i> Add Contact Info
                                 </a>
                             </div>
 

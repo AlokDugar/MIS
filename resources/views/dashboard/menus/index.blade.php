@@ -29,7 +29,8 @@
                     <div class="card">
                         <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">Menus Table</h4>
-                            <a href="{{ route('menus.create') }}" class="btn btn-primary">Add Menu</a>
+                            <a href="{{ route('menus.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add
+                                Menu</a>
                         </div>
                         <div class="card-body">
                             <div class="dt-ext table-responsive theme-scrollbar">
