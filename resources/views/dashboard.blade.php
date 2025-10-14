@@ -41,7 +41,7 @@ $totalContactLists = ContactList::count();
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                         Total Menus
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold">{{ $totalMenus ?? 12 }}</div>
+                                    <div class="h5 mb-0 font-weight-bold">{{ $totalMenus ?? 'N/A' }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-bars fa-2x text-gray-300"></i>
@@ -59,7 +59,7 @@ $totalContactLists = ContactList::count();
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         Clubs
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold">{{ $totalClubs ?? 5 }}</div>
+                                    <div class="h5 mb-0 font-weight-bold">{{ $totalClubs ?? 'N/A' }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -77,7 +77,7 @@ $totalContactLists = ContactList::count();
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Inquiries
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold">{{ $totalContactLists ?? 215 }}</div>
+                                    <div class="h5 mb-0 font-weight-bold">{{ $totalContactLists ?? 'N/A' }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-address-book fa-2x text-gray-300"></i>
