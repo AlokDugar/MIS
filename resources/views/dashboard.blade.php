@@ -1,3 +1,7 @@
+<?php
+use App\Models\Event;
+$events = Event::all();
+?>
 @extends('layouts.dashboard')
 
 @section('content')
@@ -61,7 +65,7 @@
                             <div class="row align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Contact Lists
+                                        Enquiries
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold">{{ $totalContactLists ?? 215 }}</div>
                                 </div>
@@ -105,50 +109,31 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center">
                         <h4 class="mb-0">Recent Events</h4>
-                        <a href="#" class="btn btn-sm btn-primary">View All</a>
+                        <a href="{{ route('events.index') }}" class="btn btn-sm btn-primary">View All</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>User</th>
-                                        <th>Action</th>
-                                        <th>Module</th>
+                                        <th>Image</th>
+                                        <th>Event</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Added Menu</td>
-                                        <td>Menus</td>
-                                        <td>Oct 10, 2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary Smith</td>
-                                        <td>Updated Contact Info</td>
-                                        <td>Contact Info</td>
-                                        <td>Oct 9, 2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ali Khan</td>
-                                        <td>Added Contact List</td>
-                                        <td>Contact Lists</td>
-                                        <td>Oct 8, 2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jane Doe</td>
-                                        <td>Created Club</td>
-                                        <td>Clubs</td>
-                                        <td>Oct 7, 2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mike Johnson</td>
-                                        <td>Updated Committee</td>
-                                        <td>Committees</td>
-                                        <td>Oct 6, 2025</td>
-                                    </tr>
+                                    @foreach ($events as $event)
+                                        <tr>
+                                            <td>
+                                                <img src="{{ $event->image_path && file_exists(storage_path('app/public/' . $event->image_path))
+                                                    ? asset('storage/' . $event->image_path)
+                                                    : asset('assets/images/no-image.jpg') }}"
+                                                    alt="Event Image" width="100" height="100">
+                                            </td>
+                                            <td>{{ $event->name }}</td>
+                                            <td>{{ $event->date ? $event->date->format('d M Y') : 'N/A' }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
