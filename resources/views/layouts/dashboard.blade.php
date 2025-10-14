@@ -20,6 +20,90 @@ $settings = Setting::first();
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* === Final refined version: perfect alignment + balanced spacing === */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #fd7e14 !important;
+            border: none !important;
+            color: #fff !important;
+            border-radius: 0.25rem !important;
+            margin-top: 4px !important;
+            padding: 3px 10px 3px 8px !important;
+            /* slightly narrower */
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 3px !important;
+            /* reduced gap between text & × */
+            float: none !important;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            order: 2 !important;
+            background: transparent !important;
+            color: #fff !important;
+            border: none !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            margin-left: 0 !important;
+            /* tighter spacing */
+            margin-right: 0 !important;
+            float: none !important;
+            position: static !important;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            color: #000 !important;
+        }
+
+        /* Fix the height, ensure input is aligned with tags */
+        .select2-container--default .select2-selection--multiple {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            min-height: 38px !important;
+            padding: 4px 8px !important;
+            border: 1px solid #fd7e14 !important;
+            border-radius: 0.25rem !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Fix tag alignment */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #fd7e14 !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 0.25rem !important;
+            padding: 3px 10px 3px 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 3px !important;
+            margin: 0 !important;
+        }
+
+        /* Fix the search field positioning */
+        .select2-container--default .select2-selection--multiple .select2-search--inline {
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+
+        /* Ensure the search field stays within the same line */
+        .select2-container--default .select2-selection--multiple .select2-search__field {
+            height: 28px !important;
+            line-height: 28px !important;
+            padding: 0 4px !important;
+            margin: 0 !important;
+            flex-grow: 1 !important;
+            box-sizing: border-box !important;
+            font-size: 14px !important;
+        }
+    </style>
+
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -120,6 +204,18 @@ $settings = Setting::first();
             setTimeout(function() {
                 loader.style.display = 'none';
             }, 500);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tags').select2({
+                allowClear: true,
+                width: '100%'
+            });
         });
     </script>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ClubTagController;
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\ContactListController;
 use App\Http\Controllers\Admin\EventController;
@@ -18,6 +19,8 @@ Route::resource('/contact-infos', ContactInfoController::class);
 Route::resource('/event-tags', EventTagController::class);
 Route::resource('/events', EventController::class);
 Route::post('/events/upload-image', [EventController::class, 'upload'])->name('events.upload');
+
+Route::resource('/club-tags', ClubTagController::class);
 
 Route::get('/contact-lists', [ContactListController::class, 'index'])->name('contact-lists.index');
 

@@ -14,18 +14,25 @@
                             href="{{ route('dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                             href="{{ route('menus.index') }}"><i data-feather="menu"></i><span>Menus</span></a></li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('event-tags.index') }}"><i data-feather="tag"></i><span>Event Tags</span></a>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
+                                data-feather="calendar"></i><span>Events</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('event-tags.index') }}">Event Tags</a></li>
+                            <li><a href="{{ route('events.index') }}">Event Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
+                                data-feather="users"></i><span>Clubs</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('club-tags.index') }}">Club Tags</a></li>
+                            <li><a href="{{ route('events.index') }}">Club Details</a></li>
+                        </ul>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('events.index') }}"><i data-feather="calendar"></i><span>Events</span></a>
+                            href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Committees</span></a>
                     </li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="users"></i><span>Clubs</span></a>
-                    </li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Committee
-                                Members</span></a></li>
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
                                 data-feather="mail"></i><span>Contact Us</span></a>

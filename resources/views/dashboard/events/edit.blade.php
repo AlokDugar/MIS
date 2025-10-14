@@ -53,12 +53,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Event Categories/Tags -->
+                                <!-- Event Tags -->
                                 <div class="mb-3">
-                                    <label class="form-label">Tags / Categories *</label>
+                                    <label class="form-label">Event Tags *</label>
                                     <select
-                                        class="js-example-basic-multiple col-sm-12 @error('tag_ids') is-invalid @enderror"
-                                        multiple="multiple" name="tag_ids[]">
+                                        class="form-select js-example-basic-multiple @error('tag_ids') is-invalid @enderror"
+                                        multiple="multiple" name="tag_ids[]" id="tags">
                                         @foreach ($tags as $tag)
                                             <option value="{{ $tag->id }}"
                                                 {{ in_array($tag->id, old('tag_ids', $event->tags ? $event->tags->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
@@ -66,12 +66,17 @@
                                             </option>
                                         @endforeach
                                     </select>
+
                                     @error('tag_ids')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
-                                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                        data-bs-target="#createTagModal">Add Tag</button>
+
+                                    <button type="button" id="add-tag" class="btn btn-primary mt-3 text-white fw-bold"
+                                        data-bs-toggle="modal" data-bs-target="#createTagModal">
+                                        <i class="fa fa"></i> Add Tag
+                                    </button>
                                 </div>
+
 
                                 <!-- Event Date -->
                                 <div class="mb-3">
