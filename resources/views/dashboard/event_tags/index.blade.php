@@ -18,6 +18,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">MIS - Admin Panel</a></li>
+                            <li class="breadcrumb-item active">Events</li>
                             <li class="breadcrumb-item active">Event Tags</li>
                         </ol>
                     </div>
