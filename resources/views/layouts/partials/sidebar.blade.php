@@ -31,7 +31,8 @@
                         </ul>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="briefcase"></i><span>Committees</span></a>
+                            href="{{ route('committees.index') }}"><i
+                                data-feather="briefcase"></i><span>Committees</span></a>
                     </li>
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i

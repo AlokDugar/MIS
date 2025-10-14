@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ClubController;
 use App\Http\Controllers\Admin\ClubTagController;
+use App\Http\Controllers\Admin\CommitteeController;
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\ContactListController;
 use App\Http\Controllers\Admin\EventController;
@@ -23,6 +24,7 @@ Route::post('/events/upload-image', [EventController::class, 'upload'])->name('e
 
 Route::resource('/club-tags', ClubTagController::class);
 Route::resource('/clubs', ClubController::class);
+Route::resource('/committees', CommitteeController::class);
 
 Route::get('/contact-lists', [ContactListController::class, 'index'])->name('contact-lists.index');
 
