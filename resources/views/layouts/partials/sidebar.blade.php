@@ -27,7 +27,7 @@
                                 data-feather="users"></i><span>Clubs</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('club-tags.index') }}">Club Tags</a></li>
-                            <li><a href="{{ route('events.index') }}">Club Details</a></li>
+                            <li><a href="{{ route('clubs.index') }}">Club Details</a></li>
                         </ul>
                     </li>
                     <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
