@@ -1,6 +1,6 @@
 <?php
 use App\Models\Event;
-$events = Event::all();
+$events = Event::orderBy('date', 'desc')->limit(5)->get();
 ?>
 @extends('layouts.dashboard')
 
