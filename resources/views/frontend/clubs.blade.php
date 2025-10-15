@@ -11,6 +11,14 @@
 @section('title', 'Clubs - MIS Alumni')
 @push('styles')
     <style>
+        .club-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            /* same as event tags */
+            margin-bottom: 1rem;
+        }
+
         .club-tags .badge-custom-blue {
             background-color: #1e90ff;
             /* Dodger Blue shade */

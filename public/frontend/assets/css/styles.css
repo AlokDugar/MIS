@@ -596,16 +596,15 @@ nav {
 }
 
 .club-badge {
-    padding: 0.25rem 0.75rem;
+    padding: 0.25rem 0.75rem;       /* same as event tags */
     background-color: var(--secondary); /* same as event tags */
-    color: var(--primary);              /* same as event tags */
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    display: inline-block;              /* ensure proper inline spacing */
-    margin-right: 0.5rem;               /* optional, for spacing between badges */
+    color: var(--primary);           /* same as event tags */
+    border-radius: 9999px;           /* fully rounded */
+    font-size: 0.75rem;              /* same size */
+    font-weight: 500;                /* same weight */
+    display: inline-block;           /* inline spacing */
+    margin-right: 0.5rem;            /* spacing between badges */
 }
-
 
 .club-description {
   font-size: 0.875rem;
