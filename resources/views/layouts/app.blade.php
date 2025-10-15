@@ -30,7 +30,7 @@ $activeMenus = Menu::where('status', 'Active')->get();
     @include('layouts.partials.frontend.footer')
 
     <script src="{{ asset('frontend/assets/js/app.js') }}"></script>
-    @stack('scripts')\
+    @stack('scripts')
 </body>
 
 </html>
