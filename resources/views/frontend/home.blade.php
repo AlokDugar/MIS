@@ -3,7 +3,6 @@
 @section('title', 'MIS Alumni - Home')
 
 @section('content')
-    Hero Section
     <section class="hero-section">
         <div class="hero-background"></div>
         <div class="hero-content">

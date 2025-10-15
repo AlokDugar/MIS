@@ -22,7 +22,6 @@ $activeMenus = Menu::where('status', 'Active')->get();
 
 <body>
     @include('layouts.partials.frontend.navigation')
-
     <main>
         @yield('content')
     </main>
