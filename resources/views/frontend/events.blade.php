@@ -70,7 +70,9 @@
                             <p class="event-description">
                                 {!! Str::limit(strip_tags($event->description, '<p><br>'), 50) !!}
                             </p>
-
+                            @if ($event->tags->count() > 0)
+                                <hr class="event-separator">
+                            @endif
                             <div class="event-tags">
                                 @foreach ($event->tags as $tag)
                                     <span class="event-tag">{{ $tag->name }}</span>
