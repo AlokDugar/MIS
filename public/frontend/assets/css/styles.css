@@ -41,7 +41,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -79,8 +79,9 @@ nav {
 .nav-logo-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* keeps aspect ratio */
+  object-fit: contain;
 }
+
 .nav-logo-text {
   font-weight: bold;
   font-size: 1.25rem;
@@ -91,6 +92,7 @@ nav {
   align-items: center;
   gap: 0.25rem;
   list-style: none;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .nav-menu a {
@@ -130,20 +132,25 @@ nav {
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-menu {
-    display: none;
+    display: flex; /* use flex for smooth max-height transition */
+    flex-direction: column;
+    align-items: stretch;
     position: absolute;
     top: 64px;
     left: 0;
     right: 0;
     background-color: var(--background);
     border-top: 1px solid var(--border);
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
   }
 
   .nav-menu.active {
-    display: flex;
+    max-height: 500px; /* adjust according to menu items */
+    opacity: 1;
+    padding: 0.5rem;
   }
 
   .nav-menu a {
@@ -300,6 +307,55 @@ nav {
 .stat-label {
   font-size: 0.875rem;
   color: var(--muted-foreground);
+}
+
+/* ---------------- Mobile Responsiveness ---------------- */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 4rem 1rem; /* reduce top padding */
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* stack buttons on mobile */
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.25rem;
+    max-width: 100%;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-icon {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* About Section */
