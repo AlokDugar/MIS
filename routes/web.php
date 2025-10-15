@@ -12,6 +12,28 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\EventTagController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/fclubs', function () {
+    return view('frontend.clubs');
+})->name('frontend_clubs');
+
+Route::get('/fcommittees', function () {
+    return view('frontend.committees');
+})->name('frontend_committees');
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+
+Route::get('/', function () {
+    return view('frontend.home');
+})->name('home');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/login', function () {
         return redirect()->route('dashboard');

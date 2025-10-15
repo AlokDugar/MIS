@@ -45,4 +45,3 @@ class ContactListAPIController extends Controller
         ], 201);
     }
 }
-

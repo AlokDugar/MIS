@@ -66,7 +66,7 @@ class MenuController extends Controller
         // Validate the form input
         $request->validate([
             'name' => 'required|string|max:255',
-            'url' => 'required|url|max:255',
+            'url' => 'required|max:255',
             'status' => 'required|in:Active,Inactive',
         ]);
 
