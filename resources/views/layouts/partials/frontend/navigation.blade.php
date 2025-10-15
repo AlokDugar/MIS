@@ -7,7 +7,6 @@
             <span class="nav-logo-text">MIS Alumni</span>
         </a>
 
-
         <ul class="nav-menu" id="navMenu"
             style="display: flex; align-items: center; list-style: none; margin: 0; padding: 0;">
             @foreach ($activeMenus as $menu)
