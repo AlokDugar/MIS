@@ -21,6 +21,10 @@ Route::get('/fcommittees', function () {
     return view('frontend.committees');
 })->name('frontend_committees');
 
+Route::get('/fevents', function () {
+    return view('frontend.events');
+})->name('frontend_events');
+
 Route::get('/contact', function () {
     return view('frontend.contact');
 })->name('contact');

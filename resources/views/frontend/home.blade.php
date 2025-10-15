@@ -31,7 +31,9 @@
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                 </button>
-                <button class="btn btn-outline">Explore Events</button>
+                <a href="{{ url('/fevents') }}">
+                    <button class="btn btn-outline">Explore Events</button>
+                </a>
             </div>
 
             <div class="hero-stats">

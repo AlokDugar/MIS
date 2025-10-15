@@ -93,8 +93,11 @@
                             <textarea id="message" name="message" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">
+                            Send Message
+                        </button>
                         <div id="formMessage" class="mt-3"></div>
+
                     </form>
                 </div>
             </div>
