@@ -18,12 +18,16 @@
             /* White text */
             font-size: 0.75rem;
             /* Slightly smaller text */
-            padding: 0.25rem 0.5rem;
-            /* Smaller padding */
-            border-radius: 0.25rem;
-            /* Rounded corners */
-            margin-left: 0.25rem;
-            /* Small spacing between badges */
+            padding: 0.25rem 0.75rem;
+            /* Match event tags padding */
+            border-radius: 9999px;
+            /* Fully rounded like event tags */
+            margin-left: 0.5rem;
+            /* Match spacing between event tags */
+            display: inline-block;
+            /* Ensure proper inline spacing */
+            font-weight: 500;
+            /* Same weight as event tags */
         }
     </style>
 @endpush
