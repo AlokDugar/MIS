@@ -65,8 +65,8 @@ nav {
 }
 
 .nav-logo-icon {
-  width: 75px;
-  height: 75px;
+  width: 70px;
+  height: 70px;
   border-radius: var(--radius);
   display: flex;
   align-items: center;
