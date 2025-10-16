@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 class SettingsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $settings = Setting::first();
         return view('dashboard.settings.index', compact('settings'));
     }
@@ -17,9 +19,9 @@ class SettingsController extends Controller
     {
         $data = $request->validate([
             'website_name' => 'nullable|string|max:255',
-            'dashboard_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'favicon' => 'nullable|image|mimes:png,ico|max:512',
+            'dashboard_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'favicon' => 'nullable|image|mimes:png,ico',
         ]);
 
         $settings = Setting::firstOrCreate([]);
@@ -66,7 +68,5 @@ class SettingsController extends Controller
         $settings->save();
 
         return redirect()->back()->with('success', 'Settings Updated Successfully!');
-
     }
 }
-
