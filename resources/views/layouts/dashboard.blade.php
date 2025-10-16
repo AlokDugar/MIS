@@ -22,7 +22,6 @@ $settings = Setting::first();
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
-        /* === Final refined version: perfect alignment + balanced spacing === */
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             background-color: #fd7e14 !important;
             border: none !important;
