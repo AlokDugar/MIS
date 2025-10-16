@@ -26,7 +26,7 @@
     <section class="filter-section">
         <div class="container">
             <div class="category-filter" id="eventFilters">
-                <button class="filter-btn active" data-tag="all">All Events</button>
+                <button class="filter-btn active" data-tag="all">All</button>
                 @foreach ($tags as $tag)
                     <button class="filter-btn" data-tag="{{ $tag->id }}">{{ $tag->name }}</button>
                 @endforeach
