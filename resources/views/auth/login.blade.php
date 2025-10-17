@@ -35,7 +35,7 @@ $settings = Setting::first();
                 <div class="login-card">
                     <div>
                         <div><a class="logo" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('storage/' . $settings->dashboard_logo) }}" alt="logo"></a></div>
+                                    src="{{ asset('storage/' . $settings->site_logo) }}" alt="logo"></a></div>
                         <div class="login-main">
                             @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show d-flex align-items-center justify-content-between"
