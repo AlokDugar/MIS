@@ -101,6 +101,10 @@ $settings = Setting::first();
             box-sizing: border-box !important;
             font-size: 14px !important;
         }
+
+        .select2-selection__clear {
+            display: none !important;
+        }
     </style>
 
     <!-- App css-->
