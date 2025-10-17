@@ -29,12 +29,10 @@ $settings = Setting::first();
             border-radius: 0.25rem !important;
             margin-top: 4px !important;
             padding: 3px 10px 3px 8px !important;
-            /* slightly narrower */
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             gap: 3px !important;
-            /* reduced gap between text & × */
             float: none !important;
         }
 
@@ -48,7 +46,6 @@ $settings = Setting::first();
             line-height: 1 !important;
             cursor: pointer !important;
             margin-left: 0 !important;
-            /* tighter spacing */
             margin-right: 0 !important;
             float: none !important;
             position: static !important;
@@ -58,7 +55,6 @@ $settings = Setting::first();
             color: #000 !important;
         }
 
-        /* Fix the height, ensure input is aligned with tags */
         .select2-container--default .select2-selection--multiple {
             display: flex !important;
             flex-wrap: wrap !important;
@@ -70,7 +66,6 @@ $settings = Setting::first();
             box-sizing: border-box !important;
         }
 
-        /* Fix tag alignment */
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             background-color: #fd7e14 !important;
             color: #fff !important;
@@ -84,14 +79,12 @@ $settings = Setting::first();
             margin: 0 !important;
         }
 
-        /* Fix the search field positioning */
         .select2-container--default .select2-selection--multiple .select2-search--inline {
             display: flex !important;
             align-items: center !important;
             width: 100% !important;
         }
 
-        /* Ensure the search field stays within the same line */
         .select2-container--default .select2-selection--multiple .select2-search__field {
             height: 28px !important;
             line-height: 28px !important;
