@@ -6,16 +6,13 @@ $events = Event::orderBy('date', 'desc')->limit(5)->get();
 use App\Models\Menu;
 use App\Models\Club;
 use App\Models\ContactList;
+use App\Models\Committee;
 
 $totalMenus = Menu::count();
 $totalClubs = Club::count();
-$totalContactLists = ContactList::count();
+$totalCommittees = Committee::count();
 
-$newInquiries = ContactList::where('is_read', false)->count();
-if ($newInquiries > 0) {
-    session()->flash('new_inquiries', $newInquiries);
-}
-$inquiryCount = session('new_inquiries');
+$inquiryCount = ContactList::where('is_read', false)->count();
 $message = "You have {$inquiryCount} new " . ($inquiryCount > 1 ? 'inquiries' : 'inquiry') . '.';
 ?>
 @extends('layouts.dashboard')
@@ -81,12 +78,12 @@ $message = "You have {$inquiryCount} new " . ($inquiryCount > 1 ? 'inquiries' : 
                             <div class="row align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Inquiries
+                                        Committees
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold">{{ $totalContactLists ?? 'N/A' }}</div>
+                                    <div class="h5 mb-0 font-weight-bold">{{ $totalCommittees ?? 'N/A' }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-address-book fa-2x text-gray-300"></i>
+                                    <i class="fas fa-briefcase fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -111,9 +108,9 @@ $message = "You have {$inquiryCount} new " . ($inquiryCount > 1 ? 'inquiries' : 
                 </div>
 
                 <div class="col-md-4 col-sm-6 mb-3">
-                    <a href="{{ route('contact-lists.index') }}" class="btn btn-success btn-icon-split btn-lg">
+                    <a href="{{ route('committees.index') }}" class="btn btn-success btn-icon-split btn-lg">
                         <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <span class="text">Read Inquiries</span>
+                        <span class="text">Manage Committees</span>
                     </a>
                 </div>
             </div>
