@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile-index', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile-checkOldPassword', [ProfileController::class, 'checkOldPassword'])->name('profile.checkOldPassword');
     Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::post('/contact-lists/{id}/mark-seen', [ContactListController::class, 'markSeen'])->name('contact-lists.mark-seen');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');

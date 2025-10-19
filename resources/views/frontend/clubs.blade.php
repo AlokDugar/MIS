@@ -131,9 +131,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- Join Button --}}
-                        <button class="btn btn-primary mt-3" style="width: 100%;">Join Club</button>
+                        <!--
+                            {{-- Join Button --}}
+                            <button class="btn btn-primary mt-3" style="width: 100%;">Join Club</button>
+                        -->
                     </div>
                 @endforeach
             </div>

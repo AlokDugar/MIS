@@ -74,9 +74,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- Button --}}
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">View Details</button>
+                        <!--
+                            {{-- Button --}}
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">View Details</button>
+                        -->
                     </div>
                 @endforeach
             </div>

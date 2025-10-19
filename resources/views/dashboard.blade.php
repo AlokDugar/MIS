@@ -11,6 +11,12 @@ $totalMenus = Menu::count();
 $totalClubs = Club::count();
 $totalContactLists = ContactList::count();
 
+$newInquiries = ContactList::where('is_read', false)->count();
+if ($newInquiries > 0) {
+    session()->flash('new_inquiries', $newInquiries);
+}
+$inquiryCount = session('new_inquiries');
+$message = "You have {$inquiryCount} new " . ($inquiryCount > 1 ? 'inquiries' : 'inquiry') . '.';
 ?>
 @extends('layouts.dashboard')
 
@@ -155,3 +161,19 @@ $totalContactLists = ContactList::count();
     </div>
     </div>
 @endsection
+@push('scripts')
+    @if ($inquiryCount > 0)
+        <script>
+            Swal.fire({
+                icon: 'info',
+                title: 'New Inquiries!',
+                text: '{{ $message }}',
+                confirmButtonText: 'View Now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('contact-lists.index') }}";
+                }
+            });
+        </script>
+    @endif
+@endpush

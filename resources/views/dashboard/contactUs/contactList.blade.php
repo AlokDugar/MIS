@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
 
+@push('css')
+    <style>
+        .table-warning {
+            background-color: #fff3cd !important;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="page-body">
         <div class="container-fluid">
@@ -49,7 +56,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($contactLists as $info)
-                                                <tr>
+                                                <tr class="{{ $info->is_read ? '' : 'table-warning' }}">
                                                     <td>{{ $info->id }}</td>
                                                     <td>{{ $info->name }}</td>
                                                     <td>{{ $info->email }}</td>
@@ -57,8 +64,11 @@
                                                     <td>{{ $info->subject }}</td>
                                                     <td>
                                                         <button class="btn btn-primary view-message-btn"
-                                                            data-bs-toggle="modal" data-bs-target="#messageModal"
-                                                            data-message="{{ $info->message }}">View Message</button>
+                                                            data-id="{{ $info->id }}" data-bs-toggle="modal"
+                                                            data-bs-target="#messageModal"
+                                                            data-message="{{ $info->message }}">
+                                                            View Message
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -98,10 +108,34 @@
             document.querySelectorAll('.view-message-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const message = this.getAttribute('data-message');
-                    // Replace line breaks with <br> for proper display
                     document.getElementById('modal-message-content').innerHTML = message.replace(
                         /\n/g, '<br>');
                 });
+            });
+        });
+    </script>
+    <script>
+        const routeTemplate = @json(route('contact-lists.mark-seen', ['id' => '__ID__']));
+
+        document.querySelectorAll('.view-message-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const contactId = this.getAttribute('data-id');
+                const url = routeTemplate.replace('__ID__', contactId);
+
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Content-Type': 'application/json'
+                        },
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            this.closest('tr').classList.remove('table-warning');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
             });
         });
     </script>
