@@ -109,7 +109,7 @@ $message = "You have {$inquiryCount} new " . ($inquiryCount > 1 ? 'inquiries' : 
 
                 <div class="col-md-4 col-sm-6 mb-3">
                     <a href="{{ route('committees.index') }}" class="btn btn-success btn-icon-split btn-lg">
-                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span class="icon"><i class="fas fa-briefcase"></i></span>
                         <span class="text">Manage Committees</span>
                     </a>
                 </div>
