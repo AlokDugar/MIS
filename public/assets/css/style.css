@@ -1,11 +1,4 @@
-/*! -----------------------------------------------------------------------------------
-
-    Template Name: Demo Admin
-    Description: This is Admin theme
-    Author: Pioneer Associate Pvt. Ltd.
-    Author URI: https://pioneerassociate.com.np/
-
------------------------------------------------------------------------------------
+/*!
 
 01. Header CSS
 02. Button CSS
@@ -51,7 +44,7 @@
 42. Footer CSS
 43. Dashboard
 
-/*** 
+/***
 
 ====================================================================
 	Global Settings
@@ -63,7 +56,7 @@
     color: #f2f4ff;
     background: #ff5d22;
 }
-  
+
 ::selection {
     color: #f2f4ff;
     background: #ff5d22;
@@ -166,7 +159,7 @@
 }
 
 
- /*** 
+ /***
 
 ====================================================================
 	Header CSS
@@ -196,7 +189,7 @@
 }
 
 .back-btn {
-    right: 30px; 
+    right: 30px;
     left: inherit;
 }
 
@@ -834,7 +827,7 @@
 
 .page-wrapper .page-header .header-wrapper .nav-right .profile-dropdown li.active a svg,
 .page-wrapper .page-header .header-wrapper .nav-right .profile-dropdown li:hover a svg {
-    stroke: #ff5d22 !important; 
+    stroke: #ff5d22 !important;
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right .profile-dropdown li:hover a svg path {
@@ -998,7 +991,7 @@
     .page-wrapper .page-header .header-wrapper .nav-right .serchinput {
         display: none !important
     }
-    
+
     .page-wrapper .page-header .header-wrapper .nav-right>ul>li {
         padding: 6px
     }
@@ -1146,7 +1139,7 @@
 }
 
 
- /*** 
+ /***
 
 ====================================================================
 	Sidebar Nav CSS
@@ -1916,7 +1909,7 @@
     }
 }
 
- /*** 
+ /***
 
 ====================================================================
 	Breadcrumb CSS
@@ -1996,7 +1989,7 @@
 }
 
 
- /*** 
+ /***
 
 ====================================================================
 	card CSS
@@ -2209,7 +2202,7 @@
     overflow: auto
 }
 
- /*** 
+ /***
 
 ====================================================================
 	Dashboard Index CSS
@@ -5501,7 +5494,7 @@
     }
 }
 
- /*** 
+ /***
 
 ====================================================================
 	Inner Pages CSS
@@ -8220,11 +8213,11 @@
     width: 30px;
     height: 30px;
   }
-  
+
 .symbol-empty {
     background-color: #ccc;
 }
-  
+
 .symbol-filled {
     background-color: black;
 }
@@ -8315,7 +8308,7 @@
     margin-bottom: 20px;
 }
 
- /*** 
+ /***
 
 ====================================================================
 	Footer CSS
@@ -8381,7 +8374,7 @@
 @media only screen and (max-width: 1199px) {
     .footer {
         margin-left: 0;
-    }   
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -8412,7 +8405,7 @@
 }
 
 
- /*** 
+ /***
 
 ====================================================================
 	Table Default Pagination CSS
