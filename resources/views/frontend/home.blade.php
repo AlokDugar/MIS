@@ -1,122 +1,118 @@
 @extends('layouts.app')
-
 @section('title', 'MIS Alumni - Home')
-
 @section('content')
-    <section class="hero-section">
-        <div class="hero-background"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
-                <span>Connecting Modern Indian School Alumni Worldwide</span>
+    <div class="min-h-screen">
+
+        {{-- Hero Section --}}
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0"
+                style="background-image: url('{{ asset('assets/hero-alumni.jpg') }}');
+                    background-size: cover;
+                    background-position: center;
+                    filter: brightness(0.7);">
             </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/20 to-background/40 z-0"></div>
 
-            <h1 class="hero-title">
-                Welcome to <span class="text-primary">MIS Alumni</span>
-            </h1>
-
-            <p class="hero-description">
-                A vibrant community connecting Modern Indian School graduates across the globe. Reconnect with classmates,
-                share memories, and build lasting professional and personal relationships.
-            </p>
-
-            <div class="hero-buttons">
-                <button class="btn btn-primary">
-                    Join the Network
-                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-                <a href="{{ url('/fevents') }}">
-                    <button class="btn btn-outline">Explore Events</button>
-                </a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                    <div class="stat-number">3,500+</div>
-                    <div class="stat-label">Alumni Members</div>
-                </div>
-                <div class="stat-card">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                    </svg>
-                    <div class="stat-number">25+</div>
-                    <div class="stat-label">Countries Represented</div>
-                </div>
-                <div class="stat-card">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
-                    <div class="stat-number">40+</div>
-                    <div class="stat-label">Years of Legacy</div>
+            <div class="container mx-auto px-4 z-10 text-center transition-all duration-1000 opacity-100 translate-y-0">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+                    Welcome to the<br>
+                    <span class="text-white drop-shadow-2xl">MIS Alumni Network</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                    Connecting Modern Indian School graduates worldwide, fostering lifelong relationships and professional
+                    growth
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#"
+                        class="bg-primary hover:bg-primary/90 shadow-elevated hover:scale-105 transition-all duration-300 text-lg px-8 py-6 text-white font-semibold inline-flex items-center">
+                        Join the Network
+                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="border-2 border-white bg-white/10 backdrop-blur-md text-white hover:bg-white/20 text-lg px-8 py-6 shadow-lg font-semibold inline-block">
+                        Explore More
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About MIS Alumni</h2>
-                <p class="section-description">
-                    Building bridges between generations of Modern Indian School graduates
+            {{-- Scroll Indicator --}}
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Carousel Section --}}
+        @php
+            $carouselImages = [
+                ['image' => 'event-networking.jpg', 'title' => 'Alumni Networking Event'],
+                ['image' => 'reunion-dinner.jpg', 'title' => 'Class Reunion Dinner'],
+                ['image' => 'campus-1.jpg', 'title' => 'Campus Visit'],
+                ['image' => 'mentorship-1.jpg', 'title' => 'Mentorship Program'],
+                ['image' => 'collaboration-1.jpg', 'title' => 'Innovation Workshop'],
+                ['image' => 'sports-event-1.jpg', 'title' => 'Annual Sports Day'],
+                ['image' => 'awards-ceremony.jpg', 'title' => 'Awards Ceremony'],
+                ['image' => 'virtual-meeting.jpg', 'title' => 'Virtual Meetup'],
+                ['image' => 'workshop-1.jpg', 'title' => 'Leadership Workshop'],
+                ['image' => 'graduation-celebration.jpg', 'title' => 'Graduation Celebration'],
+                ['image' => 'library-study.jpg', 'title' => 'Study Reunion'],
+                ['image' => 'career-fair.jpg', 'title' => 'Career Fair'],
+            ];
+        @endphp
+        <section class="py-16 bg-gradient-to-b from-secondary/30 to-background">
+            <div class="container mx-auto px-4 text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-4">Moments That Matter</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Explore highlights from our vibrant alumni community events and celebrations
                 </p>
             </div>
-
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
+            <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 carousel">
+                @foreach ($carouselImages as $item)
+                    <div class="flex-none w-[400px] snap-center">
+                        <div
+                            class="overflow-hidden glass-effect hover:shadow-elevated transition-all duration-300 hover:scale-[1.03] cursor-pointer h-full">
+                            <div class="relative h-[500px] overflow-hidden">
+                                <img src="{{ asset('assets/' . $item['image']) }}" alt="{{ $item['title'] }}"
+                                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent">
+                                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                                        <h3 class="text-white font-bold text-2xl drop-shadow-lg">{{ $item['title'] }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="about-card-title">Our Mission</h3>
-                    <p class="about-card-text">
-                        To foster a lifelong connection among Modern Indian School alumni, celebrating our shared heritage
-                        and supporting each other's personal and professional growth across generations and borders.
-                    </p>
-                </div>
+                @endforeach
+            </div>
+        </section>
 
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+        {{-- CTA Section --}}
+        <section class="py-16 bg-gradient-to-br from-primary via-primary/90 to-primary-foreground relative overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10 text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Reconnect?</h2>
+                <p class="text-xl text-white/95 mb-8">
+                    Join thousands of MIS alumni and unlock exclusive opportunities for networking, mentorship, and career
+                    growth.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#"
+                        class="bg-white text-primary hover:bg-white/90 shadow-elevated hover:scale-105 transition-all duration-300 text-lg px-8 py-6 font-semibold inline-flex items-center">
+                        Get Started Today
+                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
-                    </div>
-                    <h3 class="about-card-title">Our Community</h3>
-                    <p class="about-card-text">
-                        A diverse network of accomplished individuals spanning multiple continents, industries, and
-                        generations, all united by the values and experiences we gained at Modern Indian School.
-                    </p>
-                </div>
-
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3 class="about-card-title">Our Values</h3>
-                    <p class="about-card-text">
-                        Excellence, integrity, and service - the core principles instilled in us at MIS continue to guide
-                        our alumni network as we support, mentor, and inspire one another.
-                    </p>
+                    </a>
+                    <a href="{{ route('about') }}"
+                        class="border-2 border-white bg-white/10 backdrop-blur-md text-white hover:bg-white/20 text-lg px-8 py-6 font-semibold inline-block">
+                        Learn More
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 @endsection

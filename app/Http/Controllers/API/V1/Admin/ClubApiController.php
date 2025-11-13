@@ -10,17 +10,49 @@ class ClubApiController extends Controller
 {
     public function index()
     {
-        $clubs = Club::with('tags')->get();
+        $clubs = Club::with('tags')->get()->map(function ($club) {
+            return [
+                'id' => $club->id,
+                'name' => $club->name,
+                'logo' => $club->logo ? asset('storage/' . $club->logo) : null,
+                'president' => $club->president,
+                'established_date' => $club->established_date,
+                'members' => $club->members,
+                'description' => $club->description,
+                'full_description' => $club->full_description,
+                'activities' => $club->activities ? json_decode($club->activities) : [],
+                'color' => $club->color,
+                'chair' => $club->chair,
+                'co_chair' => $club->co_chair,
+                'tags' => $club->tags->map(fn($tag) => $tag->name),
+            ];
+        });
+
         return response()->json($clubs, 200);
     }
 
-    // Show single club
     public function show($id)
     {
         $club = Club::with('tags')->find($id);
+
         if (!$club) {
             return response()->json(['message' => 'Club not found'], 404);
         }
-        return response()->json($club, 200);
+
+        return response()->json([
+            'id' => $club->id,
+            'name' => $club->name,
+            'logo' => $club->logo ? asset('storage/' . $club->logo) : null,
+            'president' => $club->president,
+            'established_date' => $club->established_date,
+            'members' => $club->members,
+            'description' => $club->description,
+            'full_description' => $club->full_description,
+            'activities' => $club->activities ? json_decode($club->activities) : [],
+            'color' => $club->color,
+            'chair' => $club->chair,
+            'co_chair' => $club->co_chair,
+            'tags' => $club->tags->map(fn($tag) => $tag->name),
+        ], 200);
     }
 }

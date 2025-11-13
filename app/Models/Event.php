@@ -12,7 +12,12 @@ class Event extends Model
         'name',
         'image_path',
         'date',
-        'description'
+        'description',
+        'time',
+        'location',
+        'attendees',
+        'status',
+        'category',
     ];
 
     protected $casts = [
@@ -24,7 +29,6 @@ class Event extends Model
         return $this->belongsToMany(EventTag::class, 'event_tags_events');
     }
 
-    // Event.php
     public function tags()
     {
         return $this->belongsToMany(EventTag::class, 'event_tags_events', 'event_id', 'event_tag_id');

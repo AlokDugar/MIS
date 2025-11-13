@@ -30,11 +30,9 @@
                         <div class="card">
                             <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                                 <h4 class="mb-0">Committees Table</h4>
-                                <form action="{{ route('committees.create') }}" method="GET">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-plus"></i> Add Committee
-                                    </button>
-                                </form>
+                                <a href="{{ route('committees.create') }}" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> Add Committee
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="dt-ext table-responsive theme-scrollbar">
@@ -43,9 +41,13 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Members</th>
                                                 <th>Logo</th>
+                                                <th>Image</th>
                                                 <th>Established</th>
                                                 <th>Description</th>
+                                                <th>Impact Score</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -54,17 +56,24 @@
                                                 <tr>
                                                     <td>{{ $committee->id }}</td>
                                                     <td>{{ $committee->name }}</td>
+                                                    <td>{{ $committee->email ?? 'N/A' }}</td>
+                                                    <td>{{ $committee->members ?? 'N/A' }}</td>
                                                     <td>
                                                         <img src="{{ $committee->logo && file_exists(storage_path('app/public/' . $committee->logo))
                                                             ? asset('storage/' . $committee->logo)
                                                             : asset('assets/images/no-image.jpg') }}"
-                                                            alt="Committee Logo" width="100" height="100">
+                                                            alt="Committee Logo" width="80" height="80">
+                                                    </td>
+                                                    <td>
+                                                        <img src="{{ $committee->image && file_exists(storage_path('app/public/' . $committee->image))
+                                                            ? asset('storage/' . $committee->image)
+                                                            : asset('assets/images/no-image.jpg') }}"
+                                                            alt="Committee Image" width="80" height="80">
                                                     </td>
                                                     <td>{{ $committee->established_date ? \Carbon\Carbon::parse($committee->established_date)->format('d M Y') : 'N/A' }}
                                                     </td>
-                                                    <td>
-                                                        {!! Str::limit(strip_tags($committee->description), 50) !!}
-                                                    </td>
+                                                    <td>{!! Str::limit(strip_tags($committee->description), 50) !!}</td>
+                                                    <td>{{ $committee->impact_score ?? 'N/A' }}</td>
                                                     <td>
                                                         <ul class="action">
                                                             <li class="edit">

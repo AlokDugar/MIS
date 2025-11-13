@@ -37,7 +37,16 @@ class CommitteeController extends Controller
             'name' => 'required|string|max:255',
             'established_date' => 'required|date',
             'description' => 'nullable|string',
-            'logo' => 'nullable|image|max:2048',
+            'email' => 'nullable|email|max:255',
+            'members' => 'nullable|integer|min:0',
+            'long_description' => 'nullable|string',
+            'responsibilities' => 'nullable|array',
+            'responsibilities.*' => 'string',
+            'meetings' => 'nullable|string',
+            'achievements' => 'nullable|array',
+            'achievements.*' => 'string',
+            'impact_score' => 'nullable|numeric|min:0|max:9.9',
+            'image' => 'nullable|image|max:2048',
             'positions.*.position_name' => 'required_with:positions.*.holder_name|string|max:255',
             'positions.*.holder_name' => 'required_with:positions.*.position_name|string|max:255',
         ]);
@@ -47,10 +56,17 @@ class CommitteeController extends Controller
             $committee->name = $request->name;
             $committee->established_date = $request->established_date;
             $committee->description = $request->description;
+            $committee->email = $request->email;
+            $committee->members = $request->members ?? 0;
+            $committee->long_description = $request->long_description;
+            $committee->responsibilities = $request->responsibilities ? json_encode($request->responsibilities) : null;
+            $committee->meetings = $request->meetings;
+            $committee->achievements = $request->achievements ? json_encode($request->achievements) : null;
+            $committee->impact_score = $request->impact_score;
 
-            // Handle logo upload
-            if ($request->hasFile('logo')) {
-                $committee->logo = $request->file('logo')->store('committee_logos', 'public');
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $committee->image = $request->file('image')->store('committee_images', 'public');
             }
 
             $committee->save();
@@ -89,7 +105,17 @@ class CommitteeController extends Controller
             'name' => 'required|string|max:255',
             'established_date' => 'required|date',
             'description' => 'nullable|string',
-            'logo' => 'nullable|image|max:2048',
+            'email' => 'nullable|email|max:255',
+            'members' => 'nullable|integer|min:0',
+            'long_description' => 'nullable|string',
+            'responsibilities' => 'nullable|array',
+            'responsibilities.*' => 'string',
+            'meetings' => 'nullable|string',
+            'achievements' => 'nullable|array',
+            'achievements.*' => 'string',
+            'impact_score' => 'nullable|numeric|min:0|max:9.9',
+            'image' => 'nullable|image|max:2048',
+            'remove_image' => 'nullable|boolean',
             'positions.*.position_name' => 'required_with:positions.*.holder_name|string|max:255',
             'positions.*.holder_name' => 'required_with:positions.*.position_name|string|max:255',
         ]);
@@ -98,19 +124,26 @@ class CommitteeController extends Controller
             $committee->name = $request->name;
             $committee->established_date = $request->established_date;
             $committee->description = $request->description;
+            $committee->email = $request->email;
+            $committee->members = $request->members ?? 0;
+            $committee->long_description = $request->long_description;
+            $committee->responsibilities = $request->responsibilities ? json_encode($request->responsibilities) : null;
+            $committee->meetings = $request->meetings;
+            $committee->achievements = $request->achievements ? json_encode($request->achievements) : null;
+            $committee->impact_score = $request->impact_score;
 
-            // Handle logo removal
-            if ($request->remove_logo == '1' && $committee->logo) {
-                Storage::disk('public')->delete($committee->logo);
-                $committee->logo = null;
+            // Handle image removal
+            if ($request->remove_image == '1' && $committee->image) {
+                Storage::disk('public')->delete($committee->image);
+                $committee->image = null;
             }
 
-            // Handle new logo upload
-            if ($request->hasFile('logo')) {
-                if ($committee->logo) {
-                    Storage::disk('public')->delete($committee->logo);
+            // Handle new image upload
+            if ($request->hasFile('image')) {
+                if ($committee->image) {
+                    Storage::disk('public')->delete($committee->image);
                 }
-                $committee->logo = $request->file('logo')->store('committee_logos', 'public');
+                $committee->image = $request->file('image')->store('committee_images', 'public');
             }
 
             $committee->save();
@@ -120,11 +153,9 @@ class CommitteeController extends Controller
             $submittedIds = [];
 
             if ($request->positions) {
-                foreach ($request->positions as $index => $pos) {
-                    // Skip empty positions
+                foreach ($request->positions as $pos) {
                     if (empty($pos['position_name']) || empty($pos['holder_name'])) continue;
 
-                    // Update existing position or create new
                     if (isset($pos['id']) && in_array($pos['id'], $existingIds)) {
                         $position = CommitteePosition::find($pos['id']);
                         $position->update([
@@ -155,14 +186,11 @@ class CommitteeController extends Controller
      */
     public function destroy(Committee $committee)
     {
-        // Delete logo
-        if ($committee->logo) {
-            Storage::disk('public')->delete($committee->logo);
+        if ($committee->image) {
+            Storage::disk('public')->delete($committee->image);
         }
 
-        // Delete positions
         $committee->positions()->delete();
-
         $committee->delete();
 
         return redirect()->route('committees.index')->with('success', 'Committee deleted successfully.');

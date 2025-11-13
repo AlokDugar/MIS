@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\V1\Admin\AboutUsApiController;
+use App\Http\Controllers\API\V1\Admin\BoardMembersApiController;
 use App\Http\Controllers\API\V1\Admin\ClubApiController;
 use App\Http\Controllers\API\V1\Admin\ClubTagApiController;
 use App\Http\Controllers\API\V1\Admin\CommitteeApiController;
@@ -7,6 +9,7 @@ use App\Http\Controllers\Api\V1\Admin\ContactInfoApiController;
 use App\Http\Controllers\Api\V1\Admin\ContactListAPIController;
 use App\Http\Controllers\API\V1\Admin\EventApiController;
 use App\Http\Controllers\API\V1\Admin\EventTagApiController;
+use App\Http\Controllers\Api\V1\Admin\GalleryApiController;
 use App\Http\Controllers\Api\V1\Admin\MenuApiController;
 use App\Http\Controllers\Api\V1\Admin\SettingsApiController;
 use Illuminate\Http\Request;
@@ -27,4 +30,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::apiResource('committees', CommitteeApiController::class);
     Route::apiResource('events', EventApiController::class);
     Route::apiResource('event-tags', EventTagApiController::class);
+    Route::get('about-us', [AboutUsApiController::class, 'index']);
+    Route::get('board-members', [BoardMembersApiController::class, 'index']);
+    Route::apiResource('gallery', GalleryApiController::class);
 });

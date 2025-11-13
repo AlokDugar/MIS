@@ -10,40 +10,83 @@
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('menus.index') }}"><i data-feather="menu"></i><span>Menus</span></a></li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                                data-feather="calendar"></i><span>Events</span></a>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('dashboard') }}">
+                            <i data-feather="home"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('menus.index') }}">
+                            <i data-feather="menu"></i><span>Menus</span>
+                        </a>
+                    </li>
+
+                    <!-- Events -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i data-feather="calendar"></i><span>Events</span>
+                        </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('event-tags.index') }}">Event Tags</a></li>
                             <li><a href="{{ route('events.index') }}">Event Details</a></li>
                         </ul>
                     </li>
+
+                    <!-- Clubs -->
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                                data-feather="users"></i><span>Clubs</span></a>
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i data-feather="users"></i><span>Clubs</span>
+                        </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('club-tags.index') }}">Club Tags</a></li>
                             <li><a href="{{ route('clubs.index') }}">Club Details</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('committees.index') }}"><i
-                                data-feather="briefcase"></i><span>Committees</span></a>
-                    </li>
+
+                    <!-- Committees -->
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                                data-feather="mail"></i><span>Contact Us</span></a>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('committees.index') }}">
+                            <i data-feather="briefcase"></i><span>Committees</span>
+                        </a>
+                    </li>
+
+                    <!-- Contact Us -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i data-feather="mail"></i><span>Contact Us</span>
+                        </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('contact-infos.index') }}">Contact Info</a></li>
                             <li><a href="{{ route('contact-lists.index') }}">Contact Lists</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a>
+
+                    <!-- About Us -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('about.index') }}">
+                            <i data-feather="info"></i><span>About Us</span>
+                        </a>
+                    </li>
+
+                    <!-- Gallery -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('galleries.index') }}">
+                            <i data-feather="image"></i><span>Gallery</span>
+                        </a>
+                    </li>
+
+                    <!-- Board Members -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('board.index') }}">
+                            <i data-feather="users"></i><span>Board Members</span>
+                        </a>
+                    </li>
+
+                    <!-- Settings -->
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}">
+                            <i data-feather="settings"></i><span>Settings</span>
+                        </a>
                     </li>
                 </ul>
             </div>

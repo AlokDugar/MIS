@@ -12,10 +12,17 @@ class Club extends Model
         'president',
         'members',
         'established_date',
+        'description',
+        'full_description',
+        'activities',
+        'color',
+        'chair',
+        'co_chair',
     ];
 
     protected $casts = [
         'established_date' => 'date',
+        'activities' => 'array',
     ];
 
     public function tags()

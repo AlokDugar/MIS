@@ -14,7 +14,21 @@ class Committee extends Model
         'logo',
         'established_date',
         'description',
+        'long_description',
+        'email',
+        'members',
+        'responsibilities',
+        'meetings',
+        'achievements',
+        'image',
+        'impact_score',
     ];
+
+    protected $casts = [
+        'responsibilities' => 'array',
+        'achievements' => 'array',
+    ];
+
 
     protected $dates = ['established_date'];
 

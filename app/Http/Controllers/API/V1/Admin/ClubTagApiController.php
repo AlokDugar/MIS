@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClubTag;
-use Illuminate\Http\Request;
 
 class ClubTagApiController extends Controller
 {
@@ -14,7 +13,6 @@ class ClubTagApiController extends Controller
         return response()->json($tags, 200);
     }
 
-    // Show a single tag
     public function show($id)
     {
         $tag = ClubTag::find($id);

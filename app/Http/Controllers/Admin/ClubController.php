@@ -39,6 +39,12 @@ class ClubController extends Controller
             'president' => 'required|string|max:255',
             'members' => 'nullable|integer|min:0',
             'established_date' => 'nullable|date|before_or_equal:today',
+            'description' => 'nullable|string',
+            'full_description' => 'nullable|string',
+            'activities' => 'nullable|array',
+            'color' => 'nullable|string|max:20',
+            'chair' => 'nullable|string|max:255',
+            'co_chair' => 'nullable|string|max:255',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:club_tags,id',
         ]);
@@ -49,6 +55,12 @@ class ClubController extends Controller
             'president' => $data['president'],
             'members' => $data['members'] ?? 0,
             'established_date' => $data['established_date'] ?? null,
+            'description' => $data['description'] ?? null,
+            'full_description' => $data['full_description'] ?? null,
+            'activities' => isset($data['activities']) ? json_encode($data['activities']) : null,
+            'color' => $data['color'] ?? null,
+            'chair' => $data['chair'] ?? null,
+            'co_chair' => $data['co_chair'] ?? null,
         ]);
 
         // Handle logo upload
@@ -91,6 +103,12 @@ class ClubController extends Controller
             'president' => 'required|string|max:255',
             'members' => 'nullable|integer|min:0',
             'established_date' => 'nullable|date|before_or_equal:today',
+            'description' => 'nullable|string',
+            'full_description' => 'nullable|string',
+            'activities' => 'nullable|array',
+            'color' => 'nullable|string|max:20',
+            'chair' => 'nullable|string|max:255',
+            'co_chair' => 'nullable|string|max:255',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:club_tags,id',
             'remove_logo' => 'nullable|boolean',
@@ -116,6 +134,12 @@ class ClubController extends Controller
             'president' => $data['president'],
             'members' => $data['members'] ?? 0,
             'established_date' => $data['established_date'] ?? null,
+            'description' => $data['description'] ?? null,
+            'full_description' => $data['full_description'] ?? null,
+            'activities' => isset($data['activities']) ? json_encode($data['activities']) : null,
+            'color' => $data['color'] ?? null,
+            'chair' => $data['chair'] ?? null,
+            'co_chair' => $data['co_chair'] ?? null,
             'logo' => $data['logo'],
         ]);
 

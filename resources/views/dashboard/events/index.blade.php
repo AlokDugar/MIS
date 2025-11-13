@@ -31,21 +31,24 @@
                         <div class="card">
                             <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                                 <h4 class="mb-0">Events Table</h4>
-                                <form action="{{ route('events.create') }}" method="GET">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-plus"></i> Add Event
-                                    </button>
-                                </form>
+                                <a href="{{ route('events.create') }}" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> Add Event
+                                </a>
                             </div>
                             <div class="card-body">
-                                <div class="dt-ext table-responsive theme-scrollbar">
-                                    <table class="display keytable">
+                                <div class="table-responsive theme-scrollbar">
+                                    <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Image</th>
                                                 <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Location</th>
+                                                <th>Attendees</th>
+                                                <th>Status</th>
+                                                <th>Category</th>
                                                 <th>Tags</th>
                                                 <th>Description</th>
                                                 <th>Action</th>
@@ -63,22 +66,28 @@
                                                             alt="Event Image" width="100" height="100">
                                                     </td>
                                                     <td>{{ $event->date ? $event->date->format('d M Y') : 'N/A' }}</td>
+                                                    <td>{{ $event->time ?? 'N/A' }}</td>
+                                                    <td>{{ $event->location ?? 'N/A' }}</td>
+                                                    <td>{{ $event->attendees ?? 'N/A' }}</td>
+                                                    <td>{{ ucfirst($event->status) ?? 'N/A' }}</td>
+                                                    <td>{{ $event->category ?? 'N/A' }}</td>
                                                     <td>
                                                         @foreach ($event->categories as $tag)
-                                                            <span
-                                                                class="badge badge-light-primary">{{ $tag->name }}</span>
+                                                            <span class="badge bg-primary">{{ $tag->name }}</span>
                                                         @endforeach
                                                     </td>
                                                     <td>{!! Str::limit(strip_tags($event->description), 50) !!}</td>
                                                     <td>
-                                                        <ul class="action">
-                                                            <li class="edit">
-                                                                <a href="{{ route('events.edit', $event->id) }}">
+                                                        <ul class="action list-unstyled d-flex gap-2 mb-0">
+                                                            <li>
+                                                                <a href="{{ route('events.edit', $event->id) }}"
+                                                                    class="btn btn-sm btn-warning">
                                                                     <i data-feather="edit"></i>
                                                                 </a>
                                                             </li>
-                                                            <li class="delete">
-                                                                <a href="javascript:void(0);" class="delete-btn"
+                                                            <li>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-sm btn-danger delete-btn"
                                                                     data-id="{{ $event->id }}">
                                                                     <i data-feather="trash-2"></i>
                                                                 </a>
@@ -102,13 +111,16 @@
 
 @push('scripts')
     <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // SweetAlert Delete
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 const eventId = e.currentTarget.getAttribute('data-id');
-
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    text: "This action cannot be undone!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, delete it!',

@@ -41,7 +41,7 @@
 
                                 <!-- Club Logo -->
                                 <div class="mb-3">
-                                    <label class="form-label">Club Logo *</label>
+                                    <label class="form-label">Club Logo</label>
                                     <div class="d-lg-flex d-md-flex d-sm-flex align-items-center">
                                         <div class="p-image">
                                             <img id="logo-preview" class="img-100 square profile-pic"
@@ -71,6 +71,28 @@
                                     @enderror
                                 </div>
 
+                                <!-- Chair -->
+                                <div class="mb-3">
+                                    <label for="chair" class="form-label">Chair</label>
+                                    <input type="text" class="form-control @error('chair') is-invalid @enderror"
+                                        name="chair" id="chair" value="{{ old('chair', $club->chair) }}"
+                                        placeholder="Enter chair name">
+                                    @error('chair')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Co-Chair -->
+                                <div class="mb-3">
+                                    <label for="co_chair" class="form-label">Co-Chair</label>
+                                    <input type="text" class="form-control @error('co_chair') is-invalid @enderror"
+                                        name="co_chair" id="co_chair" value="{{ old('co_chair', $club->co_chair) }}"
+                                        placeholder="Enter co-chair name">
+                                    @error('co_chair')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <!-- Members -->
                                 <div class="mb-3">
                                     <label for="members" class="form-label">Members</label>
@@ -94,20 +116,72 @@
                                     @enderror
                                 </div>
 
+                                <!-- Short Description -->
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Short Description</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                        rows="3">{{ old('description', $club->description) }}</textarea>
+                                    @error('description')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Full Description -->
+                                <div class="mb-3">
+                                    <label for="full_description" class="form-label">Full Description</label>
+                                    <textarea class="form-control @error('full_description') is-invalid @enderror" name="full_description"
+                                        id="full_description" rows="5">{{ old('full_description', $club->full_description) }}</textarea>
+                                    @error('full_description')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Activities -->
+                                <div class="mb-3">
+                                    <label class="form-label">Activities</label>
+                                    <select
+                                        class="form-select js-example-basic-multiple @error('activities') is-invalid @enderror"
+                                        multiple="multiple" name="activities[]" id="activities">
+                                        @php
+                                            $oldActivities = old('activities', $club->activities ?? []);
+                                        @endphp
+                                        @foreach (['Workshop', 'Seminar', 'Volunteer', 'Sports', 'Cultural'] as $activity)
+                                            <option value="{{ $activity }}"
+                                                {{ in_array($activity, $oldActivities) ? 'selected' : '' }}>
+                                                {{ $activity }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('activities')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Color -->
+                                <div class="mb-3">
+                                    <label for="color" class="form-label">Club Color</label>
+                                    <input type="color"
+                                        class="form-control form-control-color @error('color') is-invalid @enderror"
+                                        name="color" id="color"
+                                        value="{{ old('color', $club->color ?? '#563d7c') }}">
+                                    @error('color')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <!-- Club Tags -->
                                 <div class="mb-3">
-                                    <label class="form-label">Tags *</label>
+                                    <label class="form-label">Tags</label>
                                     <select
                                         class="form-select js-example-basic-multiple @error('tag_ids') is-invalid @enderror"
                                         multiple="multiple" name="tag_ids[]" id="tags">
                                         @foreach ($tags as $tag)
                                             <option value="{{ $tag->id }}"
-                                                {{ in_array($tag->id, old('tag_ids', $club->tags ? $club->tags->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
+                                                {{ in_array($tag->id, old('tag_ids', $club->tags->pluck('id')->toArray())) ? 'selected' : '' }}>
                                                 {{ $tag->name }}
                                             </option>
                                         @endforeach
                                     </select>
-
                                     @error('tag_ids')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
@@ -156,7 +230,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @push('scripts')
