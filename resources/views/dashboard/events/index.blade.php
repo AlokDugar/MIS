@@ -46,9 +46,7 @@
                                                 <th>Date</th>
                                                 <th>Time</th>
                                                 <th>Location</th>
-                                                <th>Attendees</th>
                                                 <th>Status</th>
-                                                <th>Category</th>
                                                 <th>Tags</th>
                                                 <th>Description</th>
                                                 <th>Action</th>
@@ -68,9 +66,7 @@
                                                     <td>{{ $event->date ? $event->date->format('d M Y') : 'N/A' }}</td>
                                                     <td>{{ $event->time ?? 'N/A' }}</td>
                                                     <td>{{ $event->location ?? 'N/A' }}</td>
-                                                    <td>{{ $event->attendees ?? 'N/A' }}</td>
                                                     <td>{{ ucfirst($event->status) ?? 'N/A' }}</td>
-                                                    <td>{{ $event->category ?? 'N/A' }}</td>
                                                     <td>
                                                         @foreach ($event->categories as $tag)
                                                             <span class="badge bg-primary">{{ $tag->name }}</span>

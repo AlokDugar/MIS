@@ -44,7 +44,7 @@
                                                 <th>Email</th>
                                                 <th>Members</th>
                                                 <th>Logo</th>
-                                                <th>Image</th>
+                                                <th>Chair</th>
                                                 <th>Established</th>
                                                 <th>Description</th>
                                                 <th>Impact Score</th>
@@ -65,10 +65,7 @@
                                                             alt="Committee Logo" width="80" height="80">
                                                     </td>
                                                     <td>
-                                                        <img src="{{ $committee->image && file_exists(storage_path('app/public/' . $committee->image))
-                                                            ? asset('storage/' . $committee->image)
-                                                            : asset('assets/images/no-image.jpg') }}"
-                                                            alt="Committee Image" width="80" height="80">
+                                                        {{ $committee->chair ?? 'N/A' }}
                                                     </td>
                                                     <td>{{ $committee->established_date ? \Carbon\Carbon::parse($committee->established_date)->format('d M Y') : 'N/A' }}
                                                     </td>

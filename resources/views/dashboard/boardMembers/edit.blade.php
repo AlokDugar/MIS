@@ -7,8 +7,7 @@
                     <h4>Edit Board Member</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('board.update', $member->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('board.update', $member->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -23,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Bio</label>
-                            <textarea name="bio" class="form-control ckeditor">{{ old('bio', $member->bio) }}</textarea>
+                            <textarea name="bio" class="form-control">{{ old('bio', $member->bio) }}</textarea>
                         </div>
                         <div class="mb-3">
                             <label>Image</label>
@@ -43,23 +42,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor.create(document.querySelector('.ckeditor')).catch(error => {
-            console.error(error);
-        });
-
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = e => document.getElementById('image-preview').src = e.target.result;
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        function removeImage() {
-            document.getElementById('image-preview').src = "{{ asset('assets/images/no-image.jpg') }}";
-            document.getElementById('remove-image-field').value = 1;
-        }
-    </script>
-@endpush

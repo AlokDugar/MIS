@@ -19,10 +19,6 @@ class ClubApiController extends Controller
                 'established_date' => $club->established_date,
                 'members' => $club->members,
                 'description' => $club->description,
-                'full_description' => $club->full_description,
-                'activities' => $club->activities ? json_decode($club->activities) : [],
-                'color' => $club->color,
-                'chair' => $club->chair,
                 'co_chair' => $club->co_chair,
                 'tags' => $club->tags->map(fn($tag) => $tag->name),
             ];
@@ -47,10 +43,6 @@ class ClubApiController extends Controller
             'established_date' => $club->established_date,
             'members' => $club->members,
             'description' => $club->description,
-            'full_description' => $club->full_description,
-            'activities' => $club->activities ? json_decode($club->activities) : [],
-            'color' => $club->color,
-            'chair' => $club->chair,
             'co_chair' => $club->co_chair,
             'tags' => $club->tags->map(fn($tag) => $tag->name),
         ], 200);

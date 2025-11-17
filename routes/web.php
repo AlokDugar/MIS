@@ -15,34 +15,8 @@ use App\Http\Controllers\Admin\BoardMemberController;
 use App\Http\Controllers\Admin\GalleryController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/fclubs', function () {
-    return view('frontend.clubs');
-})->name('frontend_clubs');
-
-Route::get('/fcommittees', function () {
-    return view('frontend.committees');
-})->name('frontend_committees');
-
-Route::get('/fevents', function () {
-    return view('frontend.events');
-})->name('frontend_events');
-
-Route::get('/contact', function () {
-    return view('frontend.contact');
-})->name('contact');
-
-Route::get('/about', function () {
-    return view('frontend.about');
-})->name('about');
-
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('home');
-
-
 Route::middleware('auth')->group(function () {
-    Route::get('/login', function () {
+    Route::get('/', function () {
         return redirect()->route('dashboard');
     });
     Route::resource('/menus', MenuController::class);
@@ -89,6 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::get('galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
     Route::put('galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
     Route::delete('galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
+
+    Route::get('/socials', [App\Http\Controllers\Admin\SocialController::class, 'index'])->name('socials.index');
+    Route::post('/socials/update', [App\Http\Controllers\Admin\SocialController::class, 'update'])->name('socials.update');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');

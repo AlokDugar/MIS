@@ -34,41 +34,34 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'president' => 'required|string|max:255',
-            'members' => 'nullable|integer|min:0',
-            'established_date' => 'nullable|date|before_or_equal:today',
-            'description' => 'nullable|string',
-            'full_description' => 'nullable|string',
-            'activities' => 'nullable|array',
-            'color' => 'nullable|string|max:20',
-            'chair' => 'nullable|string|max:255',
-            'co_chair' => 'nullable|string|max:255',
-            'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'exists:club_tags,id',
+            'name'              => 'required|string|max:255',
+            'logo'              => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'president'         => 'required|string|max:255',
+            'co_chair'          => 'nullable|string|max:255',
+            'members'           => 'nullable|integer|min:0',
+            'established_date'  => 'nullable|date|before_or_equal:today',
+            'description'       => 'nullable|string',
+            'tag_ids'           => 'nullable|array',
+            'tag_ids.*'         => 'exists:club_tags,id',
         ]);
 
         // Create club
         $club = Club::create([
-            'name' => $data['name'],
-            'president' => $data['president'],
-            'members' => $data['members'] ?? 0,
+            'name'             => $data['name'],
+            'president'        => $data['president'],
+            'co_chair'         => $data['co_chair'] ?? null,
+            'members'          => $data['members'] ?? 0,
             'established_date' => $data['established_date'] ?? null,
-            'description' => $data['description'] ?? null,
-            'full_description' => $data['full_description'] ?? null,
-            'activities' => isset($data['activities']) ? json_encode($data['activities']) : null,
-            'color' => $data['color'] ?? null,
-            'chair' => $data['chair'] ?? null,
-            'co_chair' => $data['co_chair'] ?? null,
+            'description'      => $data['description'] ?? null,
         ]);
 
         // Handle logo upload
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $fileName = 'club_logo_' . $club->id . '_' . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
+
             $club->update([
-                'logo' => $file->storeAs('club_logos', $fileName, 'public')
+                'logo' => $file->storeAs('club_logos', $fileName, 'public'),
             ]);
         }
 
@@ -98,49 +91,51 @@ class ClubController extends Controller
         $club = Club::findOrFail($id);
 
         $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'president' => 'required|string|max:255',
-            'members' => 'nullable|integer|min:0',
-            'established_date' => 'nullable|date|before_or_equal:today',
-            'description' => 'nullable|string',
-            'full_description' => 'nullable|string',
-            'activities' => 'nullable|array',
-            'color' => 'nullable|string|max:20',
-            'chair' => 'nullable|string|max:255',
-            'co_chair' => 'nullable|string|max:255',
-            'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'exists:club_tags,id',
-            'remove_logo' => 'nullable|boolean',
+            'name'              => 'required|string|max:255',
+            'logo'              => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'president'         => 'required|string|max:255',
+            'co_chair'          => 'nullable|string|max:255',
+            'members'           => 'nullable|integer|min:0',
+            'established_date'  => 'nullable|date|before_or_equal:today',
+            'description'       => 'nullable|string',
+            'tag_ids'           => 'nullable|array',
+            'tag_ids.*'         => 'exists:club_tags,id',
+            'remove_logo'       => 'nullable|boolean',
         ]);
 
-        // Handle logo removal or update
+        // Logo removal
         if ($request->input('remove_logo') && $club->logo) {
             Storage::disk('public')->delete($club->logo);
             $data['logo'] = null;
-        } elseif ($request->hasFile('logo')) {
+        }
+        // Logo replace
+        elseif ($request->hasFile('logo')) {
             if ($club->logo) {
                 Storage::disk('public')->delete($club->logo);
             }
+
             $file = $request->file('logo');
             $fileName = 'club_logo_' . $id . '_' . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
             $data['logo'] = $file->storeAs('club_logos', $fileName, 'public');
-        } else {
+        }
+        // Keep old logo
+        else {
             $data['logo'] = $club->logo;
         }
 
+        if (empty($data['established_date'])) {
+            $data['established_date'] = $club->established_date;
+        }
+
+        // Update fields
         $club->update([
-            'name' => $data['name'],
-            'president' => $data['president'],
-            'members' => $data['members'] ?? 0,
-            'established_date' => $data['established_date'] ?? null,
-            'description' => $data['description'] ?? null,
-            'full_description' => $data['full_description'] ?? null,
-            'activities' => isset($data['activities']) ? json_encode($data['activities']) : null,
-            'color' => $data['color'] ?? null,
-            'chair' => $data['chair'] ?? null,
-            'co_chair' => $data['co_chair'] ?? null,
-            'logo' => $data['logo'],
+            'name'             => $data['name'],
+            'president'        => $data['president'],
+            'co_chair'         => $data['co_chair'] ?? null,
+            'members'          => $data['members'] ?? 0,
+            'established_date' => $data['established_date'],
+            'description'      => $data['description'] ?? null,
+            'logo'             => $data['logo'],
         ]);
 
         // Sync tags
@@ -156,7 +151,6 @@ class ClubController extends Controller
     {
         $club = Club::findOrFail($id);
 
-        // Delete logo if exists
         if ($club->logo) {
             Storage::disk('public')->delete($club->logo);
         }

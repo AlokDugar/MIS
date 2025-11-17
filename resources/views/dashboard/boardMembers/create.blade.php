@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Bio</label>
-                            <textarea name="bio" class="form-control ckeditor">{{ old('bio') }}</textarea>
+                            <textarea name="bio" class="form-control">{{ old('bio') }}</textarea>
                         </div>
                         <div class="mb-3">
                             <label>Image</label>

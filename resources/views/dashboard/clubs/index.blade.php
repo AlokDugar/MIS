@@ -46,12 +46,10 @@
                                                 <th>Name</th>
                                                 <th>Logo</th>
                                                 <th>President</th>
-                                                <th>Chair</th>
                                                 <th>Co-Chair</th>
                                                 <th>Members</th>
                                                 <th>Established</th>
                                                 <th>Tags</th>
-                                                <th>Color</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -67,7 +65,6 @@
                                                             alt="Club Logo" width="100" height="100">
                                                     </td>
                                                     <td>{{ $club->president }}</td>
-                                                    <td>{{ $club->chair ?? '-' }}</td>
                                                     <td>{{ $club->co_chair ?? '-' }}</td>
                                                     <td>{{ $club->members }}</td>
                                                     <td>{{ $club->established_date ? \Carbon\Carbon::parse($club->established_date)->format('d M Y') : 'N/A' }}
@@ -77,10 +74,6 @@
                                                             <span
                                                                 class="badge badge-light-primary">{{ $tag->name }}</span>
                                                         @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            style="display:inline-block;width:20px;height:20px;border-radius:50%;background-color:{{ $club->color ?? '#000' }};"></span>
                                                     </td>
                                                     <td>
                                                         <ul class="action">

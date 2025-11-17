@@ -32,8 +32,7 @@
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Club Name *</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" id="name" value="{{ old('name', $club->name) }}"
-                                        placeholder="Enter Club Name">
+                                        name="name" id="name" value="{{ old('name', $club->name) }}">
                                     @error('name')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
@@ -42,11 +41,11 @@
                                 <!-- Club Logo -->
                                 <div class="mb-3">
                                     <label class="form-label">Club Logo</label>
-                                    <div class="d-lg-flex d-md-flex d-sm-flex align-items-center">
+                                    <div class="d-flex align-items-center">
                                         <div class="p-image">
                                             <img id="logo-preview" class="img-100 square profile-pic"
-                                                src="{{ $club->logo ? asset('storage/club_logos/' . basename($club->logo)) : asset('assets/images/upload.png') }}"
-                                                alt="Club Logo">
+                                                src="{{ $club->logo ? asset('storage/' . $club->logo) : asset('assets/images/upload.png') }}"
+                                                alt="Logo Preview">
                                             <div class="icon-wrapper">
                                                 <i class="fas fa-plus"
                                                     onclick="document.getElementById('club_logo').click();"></i>
@@ -54,9 +53,11 @@
                                                     accept="image/*" style="display:none;" onchange="previewLogo(event)" />
                                             </div>
                                         </div>
-                                        <button type="button" id="remove-logo" class="btn btn-danger btn-sm mt-2 ms-4"
+
+                                        <button type="button" id="remove-logo" class="btn btn-danger btn-sm ms-4"
                                             onclick="removeLogo()">Remove Logo</button>
-                                        <input type="hidden" name="remove_logo" id="remove-logo-field" value="0">
+
+                                        <input type="hidden" id="remove_logo_input" name="remove_logo" value="0">
                                     </div>
                                 </div>
 
@@ -64,20 +65,8 @@
                                 <div class="mb-3">
                                     <label for="president" class="form-label">President *</label>
                                     <input type="text" class="form-control @error('president') is-invalid @enderror"
-                                        name="president" id="president" value="{{ old('president', $club->president) }}"
-                                        placeholder="Enter president name">
+                                        name="president" id="president" value="{{ old('president', $club->president) }}">
                                     @error('president')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Chair -->
-                                <div class="mb-3">
-                                    <label for="chair" class="form-label">Chair</label>
-                                    <input type="text" class="form-control @error('chair') is-invalid @enderror"
-                                        name="chair" id="chair" value="{{ old('chair', $club->chair) }}"
-                                        placeholder="Enter chair name">
-                                    @error('chair')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -86,8 +75,7 @@
                                 <div class="mb-3">
                                     <label for="co_chair" class="form-label">Co-Chair</label>
                                     <input type="text" class="form-control @error('co_chair') is-invalid @enderror"
-                                        name="co_chair" id="co_chair" value="{{ old('co_chair', $club->co_chair) }}"
-                                        placeholder="Enter co-chair name">
+                                        name="co_chair" id="co_chair" value="{{ old('co_chair', $club->co_chair) }}">
                                     @error('co_chair')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
@@ -97,8 +85,7 @@
                                 <div class="mb-3">
                                     <label for="members" class="form-label">Members</label>
                                     <input type="number" class="form-control @error('members') is-invalid @enderror"
-                                        name="members" id="members" value="{{ old('members', $club->members) }}"
-                                        placeholder="Enter number of members">
+                                        name="members" id="members" value="{{ old('members', $club->members) }}">
                                     @error('members')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
@@ -110,66 +97,23 @@
                                     <input type="date"
                                         class="form-control @error('established_date') is-invalid @enderror"
                                         name="established_date"
-                                        value="{{ old('established_date', $club->established_date ? $club->established_date->format('Y-m-d') : '') }}">
+                                        value="{{ old('established_date', $club->established_date) }}">
                                     @error('established_date')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <!-- Short Description -->
+                                <!-- Description -->
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Short Description</label>
+                                    <label for="description" class="form-label">Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                                        rows="3">{{ old('description', $club->description) }}</textarea>
+                                        rows="4">{{ old('description', $club->description) }}</textarea>
                                     @error('description')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <!-- Full Description -->
-                                <div class="mb-3">
-                                    <label for="full_description" class="form-label">Full Description</label>
-                                    <textarea class="form-control @error('full_description') is-invalid @enderror" name="full_description"
-                                        id="full_description" rows="5">{{ old('full_description', $club->full_description) }}</textarea>
-                                    @error('full_description')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Activities -->
-                                <div class="mb-3">
-                                    <label class="form-label">Activities</label>
-                                    <select
-                                        class="form-select js-example-basic-multiple @error('activities') is-invalid @enderror"
-                                        multiple="multiple" name="activities[]" id="activities">
-                                        @php
-                                            $oldActivities = old('activities', $club->activities ?? []);
-                                        @endphp
-                                        @foreach (['Workshop', 'Seminar', 'Volunteer', 'Sports', 'Cultural'] as $activity)
-                                            <option value="{{ $activity }}"
-                                                {{ in_array($activity, $oldActivities) ? 'selected' : '' }}>
-                                                {{ $activity }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('activities')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Color -->
-                                <div class="mb-3">
-                                    <label for="color" class="form-label">Club Color</label>
-                                    <input type="color"
-                                        class="form-control form-control-color @error('color') is-invalid @enderror"
-                                        name="color" id="color"
-                                        value="{{ old('color', $club->color ?? '#563d7c') }}">
-                                    @error('color')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Club Tags -->
+                                <!-- Tags -->
                                 <div class="mb-3">
                                     <label class="form-label">Tags</label>
                                     <select
@@ -177,47 +121,45 @@
                                         multiple="multiple" name="tag_ids[]" id="tags">
                                         @foreach ($tags as $tag)
                                             <option value="{{ $tag->id }}"
-                                                {{ in_array($tag->id, old('tag_ids', $club->tags->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                                {{ in_array($tag->id, $club->tags->pluck('id')->toArray()) ? 'selected' : '' }}>
                                                 {{ $tag->name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('tag_ids')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
 
                                     <button type="button" id="add-tag" class="btn btn-primary mt-3 text-white fw-bold"
                                         data-bs-toggle="modal" data-bs-target="#createTagModal">
-                                        <i class="fa fa"></i> Add Tag
+                                        Add Tag
                                     </button>
                                 </div>
 
                                 <!-- Submit Buttons -->
                                 <div class="text-end mt-4">
                                     <button type="button" class="btn btn-secondary me-2"
-                                        onclick="window.location='{{ route('clubs.index') }}'">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Update Club</button>
+                                        onclick="window.location='{{ route('clubs.index') }}'">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Create Tag Modal -->
-        <div class="modal fade" id="createTagModal" tabindex="-1" aria-labelledby="createTagModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="createTagModalLabel">Create Club Tag</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+            <!-- Create Tag Modal -->
+            <div class="modal fade" id="createTagModal" tabindex="-1" aria-labelledby="createTagModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                         <form action="{{ route('club-tags.store') }}" method="POST">
                             @csrf
-                            <div class="mb-3">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createTagModalLabel">Create Club Tag</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
                                 <label for="tagName" class="form-label">Tag Name</label>
                                 <input type="text" class="form-control" id="tagName" name="name" required>
                             </div>
@@ -229,24 +171,25 @@
                     </div>
                 </div>
             </div>
+
         </div>
-@endsection
+    @endsection
 
-@push('scripts')
-    <script>
-        function previewLogo(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('logo-preview').src = e.target.result;
-            };
-            if (file) reader.readAsDataURL(file);
-        }
+    @push('scripts')
+        <script>
+            function previewLogo(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('logo-preview').src = e.target.result;
+                };
+                if (file) reader.readAsDataURL(file);
+            }
 
-        function removeLogo() {
-            document.getElementById('logo-preview').src = "{{ asset('assets/images/upload.png') }}";
-            document.getElementById('remove-logo-field').value = '1';
-            document.getElementById('club_logo').value = "";
-        }
-    </script>
-@endpush
+            function removeLogo() {
+                document.getElementById('logo-preview').src = "{{ asset('assets/images/upload.png') }}";
+                document.getElementById('club_logo').value = "";
+                document.getElementById('remove_logo_input').value = 1;
+            }
+        </script>
+    @endpush

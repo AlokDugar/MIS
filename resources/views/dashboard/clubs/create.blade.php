@@ -67,17 +67,6 @@
                                     @enderror
                                 </div>
 
-                                <!-- Chair -->
-                                <div class="mb-3">
-                                    <label for="chair" class="form-label">Chair</label>
-                                    <input type="text" class="form-control @error('chair') is-invalid @enderror"
-                                        name="chair" id="chair" placeholder="Enter chair name"
-                                        value="{{ old('chair') }}">
-                                    @error('chair')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
                                 <!-- Co-Chair -->
                                 <div class="mb-3">
                                     <label for="co_chair" class="form-label">Co-Chair</label>
@@ -111,50 +100,12 @@
                                     @enderror
                                 </div>
 
-                                <!-- Description -->
+                                <!-- Single Description -->
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Short Description</label>
+                                    <label for="description" class="form-label">Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                                        rows="3">{{ old('description') }}</textarea>
+                                        rows="4">{{ old('description') }}</textarea>
                                     @error('description')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Full Description -->
-                                <div class="mb-3">
-                                    <label for="full_description" class="form-label">Full Description</label>
-                                    <textarea class="form-control @error('full_description') is-invalid @enderror" name="full_description"
-                                        id="full_description" rows="5">{{ old('full_description') }}</textarea>
-                                    @error('full_description')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Activities -->
-                                <div class="mb-3">
-                                    <label class="form-label">Activities</label>
-                                    <select
-                                        class="form-select js-example-basic-multiple @error('activities') is-invalid @enderror"
-                                        multiple="multiple" name="activities[]" id="activities">
-                                        <option value="Workshop">Workshop</option>
-                                        <option value="Seminar">Seminar</option>
-                                        <option value="Volunteer">Volunteer</option>
-                                        <option value="Sports">Sports</option>
-                                        <option value="Cultural">Cultural</option>
-                                    </select>
-                                    @error('activities')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Color -->
-                                <div class="mb-3">
-                                    <label for="color" class="form-label">Club Color</label>
-                                    <input type="color"
-                                        class="form-control form-control-color @error('color') is-invalid @enderror"
-                                        name="color" id="color" value="{{ old('color', '#563d7c') }}">
-                                    @error('color')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -175,7 +126,7 @@
 
                                     <button type="button" id="add-tag" class="btn btn-primary mt-3 text-white fw-bold"
                                         data-bs-toggle="modal" data-bs-target="#createTagModal">
-                                        <i class="fa fa"></i> Add Tag
+                                        Add Tag
                                     </button>
                                 </div>
 
@@ -187,6 +138,7 @@
                                     </button>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>

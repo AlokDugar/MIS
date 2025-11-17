@@ -40,9 +40,7 @@ class EventController extends Controller
             'date' => 'nullable|date|after_or_equal:today',
             'time' => 'nullable|string|max:50',
             'location' => 'nullable|string|max:255',
-            'attendees' => 'nullable|integer|min:0',
             'status' => 'nullable|string|in:upcoming,ongoing,completed',
-            'category' => 'nullable|string|max:255',
             'description' => 'required|string',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:event_tags,id',
@@ -54,9 +52,7 @@ class EventController extends Controller
             'date' => $data['date'] ?? null,
             'time' => $data['time'] ?? null,
             'location' => $data['location'] ?? null,
-            'attendees' => $data['attendees'] ?? null,
             'status' => $data['status'] ?? 'upcoming',
-            'category' => $data['category'] ?? null,
             'description' => $data['description'],
         ];
 
@@ -117,6 +113,10 @@ class EventController extends Controller
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'exists:event_tags,id',
             'remove_image' => 'nullable|boolean',
+            'time' => 'nullable|string|max:50',
+            'location' => 'nullable|string|max:255',
+            'status' => 'nullable|string|in:Upcoming,Ongoing,Completed',
+
         ]);
 
         // Handle image
@@ -146,6 +146,9 @@ class EventController extends Controller
             'date' => $data['date'] ?? null,
             'description' => $data['description'],
             'image_path' => $data['image_path'],
+            'time' => $data['time'] ?? null,
+            'location' => $data['location'] ?? null,
+            'status' => $data['status'] ?? 'upcoming',
         ]);
 
         // Sync tags

@@ -12,6 +12,7 @@ use App\Http\Controllers\API\V1\Admin\EventTagApiController;
 use App\Http\Controllers\Api\V1\Admin\GalleryApiController;
 use App\Http\Controllers\Api\V1\Admin\MenuApiController;
 use App\Http\Controllers\Api\V1\Admin\SettingsApiController;
+use App\Http\Controllers\API\V1\Admin\SocialsApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::apiResource('events', EventApiController::class);
     Route::apiResource('event-tags', EventTagApiController::class);
     Route::get('about-us', [AboutUsApiController::class, 'index']);
+    Route::get('socials', [SocialsApiController::class, 'index']);
     Route::get('board-members', [BoardMembersApiController::class, 'index']);
     Route::apiResource('gallery', GalleryApiController::class);
 });

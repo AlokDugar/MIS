@@ -82,6 +82,12 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('socials.index') }}">
+                            <i data-feather="settings"></i><span>Socials</span>
+                        </a>
+                    </li>
+
                     <!-- Settings -->
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}">

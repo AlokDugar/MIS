@@ -12,28 +12,31 @@ class EventApiController extends Controller
     // List all events
     public function index()
     {
-        $events = Event::with('tags')->get()->map(function ($event) {
-            $status = 'Upcoming';
-            if ($event->date && Carbon::parse($event->date)->isPast()) {
-                $status = 'Expired';
-            }
+        $events = Event::with('tags')
+            ->orderBy('date', 'desc') // Order by date descending
+            ->get()
+            ->map(function ($event) {
+                $status = 'Upcoming';
+                if ($event->date && Carbon::parse($event->date)->isPast()) {
+                    $status = 'Expired';
+                }
 
-            return [
-                'id' => $event->id,
-                'title' => $event->name,
-                'description' => $event->description,
-                'date' => $event->date ? Carbon::parse($event->date)->format('F d, Y') : 'TBA',
-                'time' => 'TBA',
-                'location' => 'TBA',
-                'attendees' => 'N/A',
-                'image' => $event->image_path ? asset('storage/' . $event->image_path) : null,
-                'status' => $status,
-                'tags' => $event->tags->map(fn($tag) => $tag->name),
-            ];
-        });
+                return [
+                    'id' => $event->id,
+                    'title' => $event->name,
+                    'description' => $event->description,
+                    'date' => $event->date ? Carbon::parse($event->date)->format('F d, Y') : 'TBA',
+                    'time' => $event->time,
+                    'location' => $event->location,
+                    'image' => $event->image_path ? asset('storage/' . $event->image_path) : null,
+                    'status' => $status,
+                    'tags' => $event->tags->map(fn($tag) => $tag->name),
+                ];
+            });
 
         return response()->json($events, 200);
     }
+
 
     // Show single event
     public function show($id)
@@ -53,9 +56,8 @@ class EventApiController extends Controller
             'title' => $event->name,
             'description' => $event->description,
             'date' => $event->date ? Carbon::parse($event->date)->format('F d, Y') : 'TBA',
-            'time' => 'TBA',
-            'location' => 'TBA',
-            'attendees' => 'N/A',
+            'time' => $event->time,
+            'location' => $event->location,
             'image' => $event->image_path ? asset('storage/' . $event->image_path) : null,
             'status' => $status,
             'category' => $event->tags->map(fn($tag) => $tag->name),
